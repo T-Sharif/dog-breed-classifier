@@ -71,16 +71,13 @@ def classify_images(images_dir, results_dic, model):
     # https://stackoverflow.com/questions/67109496/best-way-to-join-two-paths
     # Used https://www.geeksforgeeks.org/python-os-path-join-method/ to understand how path.join works
     from os import path # Used import path so I don't have to use up space importing all of os
-    for file_name in results_dic:
+    for file_name, value in results_dic:
        model_label = classifier(path.join(images_dir, file_name), model)
        model_label = model_label.lower().strip()
     
-       truth = results_dic[file_name][0]
+       truth = value[0]
   
        if truth in model_label:
-         results_dic[file_name].extend([model_label, 1])
+         value.extend([model_label, 1])
        else:
-         results_dic[file_name].extend([model_label, 0])
-    # .items() was found through Udacity GPT
-    for key, label in results_dic.items():
-       print(f"{key}: {label}")
+         value.extend([model_label, 0])

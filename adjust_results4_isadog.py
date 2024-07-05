@@ -79,19 +79,15 @@ def adjust_results4_isadog(results_dic, dogfile):
           dognames_dic[line] = 1
         line = infile.readline()
 
-    for file_name in results_dic:
-      if results_dic[file_name][0] in dognames_dic:
-        if results_dic[file_name][1] in dognames_dic:
-          results_dic[file_name].extend([1,1])
+    for file_name, value in results_dic.items():
+      if value[0] in dognames_dic:
+        if value[1] in dognames_dic:
+          value.extend([1,1])
         else:
-          results_dic[file_name].extend([1,0])
+          value.extend([1,0])
       else:
-        if results_dic[file_name][1] in dognames_dic:
-          results_dic[file_name].extend([0,1])
+        if value[1] in dognames_dic:
+          value.extend([0,1])
         else:
-          results_dic[file_name].extend([0,0])
-          
-    for key, label in results_dic.items():
-      print(f"{key}: {label}")
-
-
+          value.extend([0,0])
+            

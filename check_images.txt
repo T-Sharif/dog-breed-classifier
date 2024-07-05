@@ -1,0 +1,32 @@
+Thoughts: Initially, I believed that the program was classifying the images based on the file names. However, after doing a bit
+of research, I found out that CNNs (Convolutional Neural Network) use digital image processing to actually process and identify the images. 
+Overall, I had a great time learning how CNNs work and how to write python code that will allow the architechtures to identify images.
+
+P.S. - Sorry for the late project submission, I was busy with an urgent family matter that played a role in my submission date.
+
+Questions regarding Uploaded Image Classification:
+
+1. Did the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed? If not, report the differences in the 
+classifications.
+
+Answer: Yes, all three model architectures classified the breed of the dog in Dog_01.jpg as the same breed.
+
+
+2. Did each of the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed of dog as that model 
+architecture classified Dog_02.jpg? If not, report the differences in the classifications.
+
+Answer: Yes, all three model architectures classified the breed of the dog in Dog_01.jpg and Dog_02.jpg as the same breed.
+
+
+3. Did the three model architectures correctly classify Animal_Name_01.jpg and Object_Name_01.jpg to not be dogs? If not, report the 
+misclassifications.
+
+Answer: Yes, all three model architectures correctly classified Panda_01.jpg and Coffee_mug_01 as not dogs.
+
+
+4. Based upon your answers for questions 1. - 3. above, select the model architecture that you feel did the best at classifying the four 
+uploaded images. Describe why you selected that model architecture as the best on uploaded image classification.
+
+Answer: The answers from questions 1-3 don't provide sufficient information to make such a decision given that they all classifed the 
+uploaded images correctly. However, I would select ALEXNET as the model architechture as the best on uploaded image classification because
+it had the fastest runtime of 0:0:0, whereas RESNET had a runtime of 0:0:1 and VGG had a runtime of 0:0:6.

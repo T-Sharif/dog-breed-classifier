@@ -46,10 +46,10 @@ def get_pet_labels(image_dir):
 
     results_dic = dict()
 
-    for file_name in range(0, len(in_files), 1):
-      if in_files[file_name][0] != '.':
+    for file_name in in_files:
+      if file_name[0] != '.':
         pet_label = ''
-        pet_label = in_files[file_name].lower().split("_")
+        pet_label = file_name.lower().split("_")
         pet_label = ' '.join(pet_label)
         
         # consulted a post on Stack Overflow for creating a list to remove the digits
@@ -60,10 +60,10 @@ def get_pet_labels(image_dir):
             label_parts.append(word)
         pet_label = ''.join(label_parts)
         pet_label = pet_label[:-4]
-        if in_files[file_name] not in results_dic:
-          results_dic[in_files[file_name]] = [pet_label.strip()]
+        if file_name not in results_dic:
+          results_dic[file_name] = [pet_label.strip()]
         else:
-          print("** Warning: Duplicate files exist in directory:", in_files[file_name])
+          print("** Warning: Duplicate files exist in directory:", file_name)
 
     # Replace None with the results_dic dictionary that you created with this
     # function

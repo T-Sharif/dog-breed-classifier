@@ -90,7 +90,7 @@ def calculates_results_stats(results_dic):
             if results_dic[file_name][4] == 1:
                 results_stats_dic['n_correct_dogs'] += 1
         else:
-            if results_dic[file_name][3] == 0 and results_dic[file_name][4] == 0:
+            if results_dic[file_name][4] == 0:
                 results_stats_dic['n_correct_notdogs'] += 1
 
     results_stats_dic['n_images'] = len(results_dic)
@@ -102,7 +102,5 @@ def calculates_results_stats(results_dic):
         results_stats_dic['pct_correct_notdogs'] = (results_stats_dic['n_correct_notdogs'] / results_stats_dic['n_notdogs_img']) * 100
     else:
         results_stats_dic['pct_correct_notdogs'] = 0
-    for key, label in results_stats_dic.items():
-        print(f"{key}: {label}")
-
+        
     return results_stats_dic

@@ -78,10 +78,11 @@ def print_results(results_dic, results_stats_dic, model,
     != results_stats_dic['n_images'])):
         print("\nINCORRECT Dog or Not Dog Assignments:")
         for file_name in results_dic:
-            if results_dic[file_name][3] == 1 and results_dic[file_name][4] == 0:
-                print("Pet label, {:30}, is a dog but is classified as not a dog, {:30}.".format(results_dic[file_name][0], results_dic[file_name][1]))
-            elif results_dic[file_name][3] == 0 and results_dic[file_name][4] == 1:
-                print("Pet label, {:30}, is not a dog but is classified as a dog, {:30}.".format(results_dic[file_name][0], results_dic[file_name][1]))
+            if results_dic[file_name][3] != results_dic[file_name][4]:
+                if results_dic[file_name][3] == 1:
+                    print("Pet label, {:30}, is a dog but is classified as not a dog, {:30}.".format(results_dic[file_name][0], results_dic[file_name][1]))
+                else:
+                    print("Pet label, {:30}, is not a dog but is classified as a dog, {:30}.".format(results_dic[file_name][0], results_dic[file_name][1]))
     if (print_incorrect_breed and (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
         print("\nINCORRECT Dog Breed Assignment:")
         for file_name in results_dic:

@@ -23,7 +23,7 @@
 # Imports classifier function for using CNN to classify images 
 from classifier import classifier 
 
-# TODO 3: Define classify_images function below, specifically replace the None
+# TODO: Define classify_images function below, specifically replace the None
 #       below by the function definition of the classify_images function. 
 #       Notice that this function doesn't return anything because the 
 #       results_dic dictionary that is passed into the function is a mutable 
@@ -71,27 +71,22 @@ def classify_images(images_dir, results_dic, model):
     # Used https://www.geeksforgeeks.org/python-os-path-join-method/ to understand how path.join works
     # Used import path so I don't have to use up space importing all of os
     from os import path
-    # Process all files in the results_dic - use images_dir to give fullpath
-    # that indicates the folder and the filename (key) to be used in the 
-    # classifier function
+    
+    # Process all files in the results_dic - use images_dir to give fullpath that indicates the folder and the 
+    # filename (key) to be used in the classifier function
     for file_name, value in results_dic:
-       #  Runs classifier function to classify the images classifier function 
-       # inputs: path + filename  and  model, returns model_label 
-       # as classifier label
+       # Runs classifier function to classify the images classifier function, returns model_label as classifier label
        model_label = classifier(path.join(images_dir, file_name), model)
-       # Processes the results so they can be compared with pet image labels
-       # set labels to lowercase (lower) and stripping off whitespace(strip)
+       # Processes the results so they can be compared with pet image labels set labels to lowercase and stripping off whitespace
        model_label = model_label.lower().strip()
 
        # defines truth as pet image label  
        truth = value[0]
 
-       # If the pet image label is found within the classifier label list of terms 
-       # as an exact match to on of the terms in the list - then they are added to 
-       # results_dic as an exact match(1) using extend list function
+       # If the pet image label is found within the classifier label list of terms as an exact match to on of the terms in
+       # the list - then they are added to results_dic as an exact match(1)
        if truth in model_label:
          value.extend([model_label, 1])
-       # if not found then added to results dictionary as NOT a match(0) using
-       # the extend function
+       # if not found then added to results dictionary as NOT a match(0)
        else:
          value.extend([model_label, 0])

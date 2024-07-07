@@ -40,14 +40,19 @@ def get_pet_labels(image_dir):
       List. The list contains for following item:
          index 0 = pet image label (string)
     """
-    
-    # used the framework from the hints page and modified/filled in the necessary information
+    # Creates list of files in directory
     in_files = listdir(image_dir)
 
+    # Creates empty dictionary for the results
     results_dic = dict()
 
+    # Processes through each file in the directory, extracting only the words
+    # of the file that contain the pet image label
     for file_name in in_files:
+      # Skips file if starts with . (like .DS_Store of Mac OSX) because it 
+      # isn't an pet image file
       if file_name[0] != '.':
+        # Creates temporary label variable to hold pet label name extracted
         pet_label = ''
         pet_label = file_name.lower().split("_")
         pet_label = ' '.join(pet_label)
@@ -55,11 +60,16 @@ def get_pet_labels(image_dir):
         # consulted a post on Stack Overflow for creating a list to remove the digits
         #(https://stackoverflow.com/questions/12851791/removing-numbers-from-string)
         label_parts = []
+        # Removes numbers
         for word in pet_label:
           if word.isalpha and not word.isdigit(): 
             label_parts.append(word)
         pet_label = ''.join(label_parts)
+        # Removes .jpeg extension
         pet_label = pet_label[:-4]
+        # If filename doesn't already exist in dictionary add it and it's
+        # pet label - otherwise print an error message because indicates 
+        # duplicate files (filenames)
         if file_name not in results_dic:
           results_dic[file_name] = [pet_label.strip()]
         else:

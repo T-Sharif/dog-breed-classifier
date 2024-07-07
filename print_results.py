@@ -62,29 +62,39 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """
-    
-    # used the framework from the hints page and modified/filled in the necessary information
+
+    # Prints summary statistics over the run
     print("\n\n*** Results Summary for CNN Model Architecture", model.upper(), "***")
     print("{:20}: {:3d}".format('N Images', results_stats_dic['n_images']))
     print("{:20}: {:3d}".format('N Dog Images', results_stats_dic['n_dogs_img']))
     print("{:20}: {:3d}".format('N \'Not-a\' Dog Images', results_stats_dic['n_notdogs_img']))
 
+    # Prints summary statistics (percentages) on Model Run
     for key in results_stats_dic:
         if key.startswith('p'):
-            # Asked Udacity GPT how to format the print statement in the if statement for easier readability
+          # formating for easier readability
             formatted_key = ' '.join(word.capitalize() for word in key.split('_'))
             print("{:20}: {:.2f}".format(formatted_key, results_stats_dic[key]))
+    # IF print_incorrect_dogs == True AND there were images incorrectly 
+    # classified as dogs or vice versa - print out these cases
     if (print_incorrect_dogs and ((results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs']) 
     != results_stats_dic['n_images'])):
         print("\nINCORRECT Dog or Not Dog Assignments:")
+        # process through results dict, printing incorrectly classified dogs
         for file_name in results_dic:
+            # Pet Image Label is a Dog - Classified as NOT-A-DOG -OR- 
+            # Pet Image Label is NOT-a-Dog - Classified as a-DOG
             if results_dic[file_name][3] != results_dic[file_name][4]:
                 if results_dic[file_name][3] == 1:
                     print("Pet label, {:30}, is a dog but is classified as not a dog, {:30}.".format(results_dic[file_name][0], results_dic[file_name][1]))
                 else:
                     print("Pet label, {:30}, is not a dog but is classified as a dog, {:30}.".format(results_dic[file_name][0], results_dic[file_name][1]))
+    # IF print_incorrect_breed == True AND there were dogs whose breeds 
+    # were incorrectly classified - print out these cases    
     if (print_incorrect_breed and (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
         print("\nINCORRECT Dog Breed Assignment:")
+        # process through results dict, printing incorrectly classified breeds
         for file_name in results_dic:
+          # Pet Image Label is-a-Dog, classified as-a-dog but is WRONG breed
             if (sum(results_dic[file_name][3:]) == 2 and results_dic[file_name][2] == 0):
                 print("Real: {:>26} Classifier: {:>30}".format(results_dic[file_name][0], results_dic[file_name][1]))

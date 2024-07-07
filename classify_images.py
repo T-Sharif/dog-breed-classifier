@@ -66,18 +66,32 @@ def classify_images(images_dir, results_dic, model):
            None - results_dic is mutable data type so no return needed.         
     """
     
-    # Used the hints file to build a framework and modified/filled in the necessary information
     # Used a Stack Overflow post to figure out that os.path.join lets me join images_dir and file_name without errors
     # https://stackoverflow.com/questions/67109496/best-way-to-join-two-paths
     # Used https://www.geeksforgeeks.org/python-os-path-join-method/ to understand how path.join works
-    from os import path # Used import path so I don't have to use up space importing all of os
+    # Used import path so I don't have to use up space importing all of os
+    from os import path
+    # Process all files in the results_dic - use images_dir to give fullpath
+    # that indicates the folder and the filename (key) to be used in the 
+    # classifier function
     for file_name, value in results_dic:
+       #  Runs classifier function to classify the images classifier function 
+       # inputs: path + filename  and  model, returns model_label 
+       # as classifier label
        model_label = classifier(path.join(images_dir, file_name), model)
+       # Processes the results so they can be compared with pet image labels
+       # set labels to lowercase (lower) and stripping off whitespace(strip)
        model_label = model_label.lower().strip()
-    
+
+       # defines truth as pet image label  
        truth = value[0]
-  
+
+       # If the pet image label is found within the classifier label list of terms 
+       # as an exact match to on of the terms in the list - then they are added to 
+       # results_dic as an exact match(1) using extend list function
        if truth in model_label:
          value.extend([model_label, 1])
+       # if not found then added to results dictionary as NOT a match(0) using
+       # the extend function
        else:
          value.extend([model_label, 0])

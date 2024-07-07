@@ -38,7 +38,7 @@
 #            pct_correct_notdogs - percentage of correctly classified NON-dogs
 #
 ##
-# TODO 5: Define calculates_results_stats function below, please be certain to replace None
+# TODO: Define calculates_results_stats function below, please be certain to replace None
 #       in the return statement with the results_stats_dic dictionary that you create 
 #       with this function
 # 
@@ -67,22 +67,19 @@ def calculates_results_stats(results_dic):
                      and the value is the statistic's value. See comments above
                      and the previous topic Calculating Results in the class for details
                      on how to calculate the counts and statistics.
-    """        
-    # Replace None with the results_stats_dic dictionary that you created with 
-    # this function 
-
+    """       
     # Creates empty dictionary for results_stats_dic
     results_stats_dic = dict()
 
-    # Sets all counters to initial values of zero so that they can 
-    # be incremented while processing through the images in results_dic 
+    # Sets all counters to initial values of zero so that they can be incremented while processing through the images
+    # in results_dic 
     results_stats_dic['n_dogs_img'] = 0
     results_stats_dic['n_match'] = 0
     results_stats_dic['n_correct_dogs'] = 0
     results_stats_dic['n_correct_notdogs'] = 0
     results_stats_dic['n_correct_breed'] = 0
 
-    # process through the results dictionary
+    # Process through the results dictionary
     for file_name in results_dic:
         # Labels Match Exactly - counts matches
         if results_dic[file_name][2] == 1:
@@ -93,26 +90,28 @@ def calculates_results_stats(results_dic):
         # Pet Image Label is a Dog - counts number of dog images
         if results_dic[file_name][3] == 1:
             results_stats_dic['n_dogs_img'] += 1
-            # Classifier classifies image as Dog (& pet image is a dog) - counts number of correct dog classifications
+            # Classifier classifies image as Dog and pet image is a dog - counts number of correct dog classifications
             if results_dic[file_name][4] == 1:
                 results_stats_dic['n_correct_dogs'] += 1
         # Pet Image Label is NOT a Dog
         else:
-            # Classifier classifies image as NOT a Dog(& pet image isn't a dog)
-            # counts number of correct NOT dog clasifications.
+            # Classifier classifies image as NOT a Dog and pet image isn't a dog - counts number of correct NOT dog clasifications.
             if results_dic[file_name][4] == 0:
                 results_stats_dic['n_correct_notdogs'] += 1
 
-    # Calculates run statistics (counts & percentages) below that are calculated
-    # using the counters from above.
-    # calculates number of total images
+    # Calculates run statistics (counts & percentages) below that are calculated using the counters from above.
+    # Calculates number of total images
     results_stats_dic['n_images'] = len(results_dic)
+    
     # calculates number of not-a-dog images using - images & dog images counts
     results_stats_dic['n_notdogs_img'] = (results_stats_dic['n_images'] - results_stats_dic['n_dogs_img'])
+    
     # Calculates % correct for matches
     results_stats_dic['pct_match'] = (results_stats_dic['n_match'] / results_stats_dic['n_images']) * 100
+    
     # Calculates % correct dogs
     results_stats_dic['pct_correct_dogs'] = (results_stats_dic['n_correct_dogs'] / results_stats_dic['n_dogs_img']) * 100
+    
     # Calculates % correct breed of dog
     results_stats_dic['pct_correct_breed'] = (results_stats_dic['n_correct_breed'] / results_stats_dic['n_dogs_img']) * 100
     

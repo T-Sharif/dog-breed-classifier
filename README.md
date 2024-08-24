@@ -2,6 +2,8 @@
 This program uses Python to determine if submitted images are of dogs or something else, and if they are dogs, it tries to identify their breed.
 It measures how accurate each method (ALEXNET, RESNET, VGG) is and how long it takes to classify each image.
 
+For a brief explanation of the program results, see the [*program_results_overview.md*](program_results_overview.md) file.
+
 ### Principal Program Objectives
 1. Determine whether each image depicts a dog or not, even if the breed classification is incorrect.
 2. Classify the breed accurately for images that are identified as dogs.

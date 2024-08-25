@@ -26,7 +26,7 @@ Summary: ResNet provides a good balance between classification accuracy and comp
 
 # Results from Testing Set
 ## Overview
-The following results summarize the performance of each CNN architecture when classifying a smaller [set of 4 images](uploaded_images)—a [coffee mug](Coffee_mug_01.jpg), a [golden retriever](Dog_01.jpg), a [mirrored version of the golden retriever](Dog_02.jpg), and a [panda](Panda_01.JPG). This includes the accuracy in identifying dogs versus non-dogs and breed classification accuracy for the identified dogs (**there was an error in the format of the 4 uploaded images, so while the dog breed is correctly identified, the program assigns the image as a breed mismatch**).
+The following results summarize the performance of each CNN architecture when classifying a smaller [set of 4 images](uploaded_images)—a coffee mug, a golden retriever, a mirrored version of the golden retriever, and a panda. This includes the accuracy in identifying dogs versus non-dogs and breed classification accuracy for the identified dogs (**there was an error in the format of the 4 uploaded images, so while the dog breed is correctly identified, the program assigns the image as a breed mismatch**).
 
 *Click the architecture name for the full results file.*
 

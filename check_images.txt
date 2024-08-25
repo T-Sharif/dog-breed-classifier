@@ -1,9 +1,3 @@
-Thoughts: Initially, I believed that the program was classifying the images based on the file names. However, after doing a bit
-of research, I found out that CNNs (Convolutional Neural Network) use digital image processing to actually process and identify the images. 
-Overall, I had a great time learning how CNNs work and how to write python code that will allow the architechtures to identify images.
-
-P.S. - Sorry for the late project submission, I was busy with an urgent family matter that played a role in my submission date.
-
 Questions regarding Uploaded Image Classification:
 
 1. Did the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed? If not, report the differences in the 

@@ -67,6 +67,6 @@ ResNet performs similarly to AlexNet and VGG on the testing set with a moderate 
 This analysis indicates that while VGG is superior in breed classification accuracy, AlexNet offers the advantage of faster processing time. ResNet provides a balanced approach with a reasonable trade-off between accuracy and computational efficiency.
 
 ## Recommendations
-1. For applications requiring high classification accuracy, VGG is preferred despite its longer processing time.
-2. For faster processing with reasonable accuracy, ResNet is a good choice.
-3. AlexNet is suitable for applications where classification is less critical, and processing time is a priority.
+1. For faster processing with reasonable accuracy, **ResNet** is a good choice.
+2. For applications requiring high classification accuracy, **VGG** is preferred despite its longer processing time.
+3. **AlexNet** is suitable for applications where classification is less critical, and processing time is a priority.
